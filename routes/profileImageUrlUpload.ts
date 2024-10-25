@@ -23,7 +23,7 @@ module.exports = function profileImageUrlUpload () {
           throw new Error('Invalid hostname')
         }
       } catch (err) {
-        return next(new Error('Invalid URL'))
+        next(new Error('Invalid URL')); return
       }
       if (url.match(/(.)*solve\/challenges\/server-side(.)*/) !== null) req.app.locals.abused_ssrf_bug = true
       const loggedInUser = security.authenticatedUsers.get(req.cookies.token)
